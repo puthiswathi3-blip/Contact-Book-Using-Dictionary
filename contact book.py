@@ -1,0 +1,77 @@
+
+# Contact Book Using Dictionaries
+
+contacts = {}
+
+def add_contact():
+    phone = input("Enter phone number: ")
+
+    if phone in contacts:
+        print("Contact already exists!")
+    else:
+        name = input("Enter contact name: ")
+        contacts[phone] = name
+        print("Contact added successfully!")
+
+def search_contact():
+    phone = input("Enter phone number to search: ")
+
+    if phone in contacts:
+        print("Contact Name:", contacts[phone])
+        print("Phone Number:", phone)
+    else:
+        print("Contact not found!")
+
+def update_contact():
+    phone = input("Enter phone number to update: ")
+
+    if phone in contacts:
+        name = input("Enter new contact name: ")
+        contacts[phone] = name
+        print("Contact updated successfully!")
+    else:
+        print("Contact not found!")
+
+def delete_contact():
+    phone = input("Enter phone number to delete: ")
+
+    if phone in contacts:
+        del contacts[phone]
+        print("Contact deleted successfully!")
+    else:
+        print("Contact not found!")
+
+def view_contacts():
+    if not contacts:
+        print("Contact book is empty!")
+    else:
+        print("\n--- Contact Book ---")
+        for phone, name in contacts.items():
+            print("Name:", name, "| Phone:", phone)
+
+while True:
+    print("\n===== CONTACT BOOK =====")
+    print("1. Add Contact")
+    print("2. Search Contact")
+    print("3. Update Contact")
+    print("4. Delete Contact")
+    print("5. View All Contacts")
+    print("6. Exit")
+
+    choice = input("Enter your choice (1-6): ")
+
+    if choice == "1":
+        add_contact()
+    elif choice == "2":
+        search_contact()
+    elif choice == "3":
+        update_contact()
+    elif choice == "4":
+        delete_contact()
+    elif choice == "5":
+        view_contacts()
+    elif choice == "6":
+        print("Thank you for using Contact Book!")
+        break
+    else:
+        print("Invalid choice! Please select 1-6.")
